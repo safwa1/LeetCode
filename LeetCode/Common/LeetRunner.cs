@@ -1,3 +1,5 @@
+using static System.Console;
+
 namespace LeetCode.Common;
 
 public static class LeetRunner
@@ -6,31 +8,30 @@ public static class LeetRunner
     {
         foreach (var type in leetTypes)
         {
-            if (!typeof(ILeet).IsAssignableFrom(type))
+            if (!type.IsAssignableFrom<ILeet>())
             {
-                Console.WriteLine($"{type.Name} does not implement ILeet.");
+                WriteLine($"{type.Name} does not implement ILeet.");
                 continue;
             }
-            Console.WriteLine($"Running {type.Name}...");
-            if (Activator.CreateInstance(type) is not ILeet instance) continue;
+            
+            WriteLine($"Running {type.Name}...");
+            if (type.NewInstance() is not ILeet instance) continue;
             instance.Execute();
-            Console.WriteLine();
+            WriteLine();
         }
     }
     
     public static void Run(Type type, params object[] args)
     {
-        if (!typeof(ILeet).IsAssignableFrom(type))
+        if (!type.IsAssignableFrom<ILeet>())
         {
-            Console.WriteLine($"{type.Name} does not implement ILeet.");
+            WriteLine($"{type.Name} does not implement ILeet.");
             return;
         }
 
-        Console.WriteLine($"Running {type.Name}...");
-        if (Activator.CreateInstance(type, args) is ILeet instance)
-        {
-            instance.Execute();
-            Console.WriteLine();       
-        }
+        WriteLine($"Running {type.Name}...");
+        if (type.NewInstance(args) is not ILeet instance) return;
+        instance.Execute();
+        WriteLine();
     }
 }

@@ -48,6 +48,12 @@ namespace LeetCode.Leets;
 /// </summary>
 public class ThreeSumLeet: ILeet
 {
+    private static int x = 0;
+    public ThreeSumLeet()
+    {
+        Console.WriteLine("OK {" + ++x + "}");
+    }
+    
     /// <summary>
     /// Finds all unique triplets in the array which give the sum of zero.
     /// </summary>

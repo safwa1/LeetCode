@@ -70,9 +70,9 @@ public class IsPalindromeLeet : ILeet
     /// </summary>
     public void Execute()
     {
-        Console.WriteLine(IsPalindrome(121));
-        Console.WriteLine(IsPalindrome(-121));
-        Console.WriteLine(IsPalindrome(10));
-        Console.WriteLine(IsPalindrome(11));
+        Console.WriteLine($"121 Is Palindrome: {IsPalindrome(121)}");
+        Console.WriteLine($"-121 Is Palindrome: {IsPalindrome(-121)}");
+        Console.WriteLine($"10 Is Palindrome: {IsPalindrome(10)}");
+        Console.WriteLine($"11 Is Palindrome: {IsPalindrome(11)}");
     }
 }
